@@ -18,9 +18,17 @@ $dalmatien = new Chien(4, 'poil court', 2, 1, 'noir');
 
 <?php
 // echo $dalmatien->promenade();
-echo $dalmatien->nourrir();
-echo $dalmatien->visiteVeterinaire();
-echo $dalmatien->promenade();
+
+$actions[] = $dalmatien->nourrir();
+$actions[] = $dalmatien->promenade();
+$actions[] = $dalmatien->visiteVeterinaire();
+
+if($actions !== null):
+    foreach($actions as $action):
+        echo '<p>'. $action['action'].' '.$action['points'].'points '.$action['parametre'] . '</p>';
+        endforeach;
+endif;
+
 ?>
 
 <p>Humeur du chien : <?= $dalmatien->gethumeur() .'/'.$dalmatien->getHumeurMax()?></p>

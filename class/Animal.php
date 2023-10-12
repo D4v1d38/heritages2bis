@@ -31,10 +31,19 @@ abstract class Animal
         return "<p>J'ai {$this->yeux} yeux et {$this->pattes} pattes, je suis couvert de {$this->fourrure}</p>";
     }
 
-    public function visiteVeterinaire():void
+    public function visiteVeterinaire()
     {
-        $this->humeur->visiteVeterinaire();
-        $this->sante->visiteVeterinaire();
+        $actionsUn = $this->humeur->visiteVeterinaire();
+        $actionsDeux = $this->sante->visiteVeterinaire();
+
+        return $actions = array_merge($actionsUn,$actionsDeux);
+        // var_dump( ['action' => $actions[0]['action'],
+        // 'points' => $actions[0]['points'],
+        // 'niveauHumeur' => $actions[0]['niveauHumeur'],
+    // ]);
+    // var_dump($actionsUn);
+    // var_dump($actionsDeux);
+    var_dump($actions);
     }
 
     public function promenade()
