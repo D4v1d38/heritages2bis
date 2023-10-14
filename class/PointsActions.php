@@ -1,8 +1,14 @@
 <?php
 namespace App\class;
 
+require "../heritages2bis/traits/CreateString.php";
+
+use App\traits\CreateString;
+
 abstract class PointsActions
 {
+    use CreateString;
+
     protected const POINT_5 = 5;
     protected const POINT_10 = 10;
     protected const POINT_15 = 15;

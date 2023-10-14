@@ -15,37 +15,45 @@ class Humeur extends PointsActions
     private const POINT_NOURRIR = self::POINT_25;
   
     
-    public function promenade():array
+    public function promenade(): string
     {
         $this->niveauHumeur = $this->ajoutPoints($this->niveauHumeur,self::POINT_PROMENADE,self::HUMEUR_MIN,self::HUMEUR_MAX );
-        return ['action'        => 'le chien a été promené !',
+        $actions = ['action'        => 'le chien a été promené !',
                 'points'        => self::POINT_PROMENADE,
                 'niveauHumeur'  => $this->setHumeur($this->niveauHumeur),
                 'parametre'     => $this->categorie
         ];
+
+        return $this->createActionString($actions);
     }
 
-    public function nourrir():array
+    public function nourrir():string
     {
         $this->niveauHumeur = $this->ajoutPoints($this->niveauHumeur,self::POINT_NOURRIR,self::HUMEUR_MIN,self::HUMEUR_MAX );
-        return  ['action'       => ' le chien a été nourri !',
-                'points'        => self::POINT_NOURRIR,
-                'niveauHumeur'  => $this->setHumeur($this->niveauHumeur),
-                'parametre'     => $this->categorie
+        $actions = ['action'       => ' le chien a été nourri !',
+                    'points'        => self::POINT_NOURRIR,
+                    'niveauHumeur'  => $this->setHumeur($this->niveauHumeur),
+                    'parametre'     => $this->categorie
         ];
+        return $this->createActionString($actions);
+        
     }
 
-    public function visiteVeterinaire():array
+    public function visiteVeterinaire(): string
     {
         $humeurAvant = $this->gethumeur();
         $humeurApres = $this->setHumeur($this->niveauHumeur*0.5);
         $points = $humeurApres - $humeurAvant;
 
-        return  ['action'  => ' Visite chez le vétérinaire',
-        'points'        => $points,
-        'niveauHumeur'  => $this->setHumeur($this->niveauHumeur),
-        'parametre'     => $this->categorie
+        $actions =  ['action'       => ' Visite chez le vétérinaire',
+                'points'        => $points,
+                'niveauHumeur'  => $this->setHumeur($this->niveauHumeur),
+                'parametre'     => $this->categorie
         ];
+
+        return $this->createActionString($actions);
+
+
     }
 
     public function gethumeur(): int
