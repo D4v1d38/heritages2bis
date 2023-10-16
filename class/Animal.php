@@ -7,6 +7,8 @@ require "./class/Sante.php";
 
 abstract class Animal
 {
+    protected $nom;
+    protected $race;
     protected $yeux;
     protected $bouche;
     protected $pattes;
@@ -15,8 +17,10 @@ abstract class Animal
     protected $humeur;
     protected $sante;
 
-    public function __construct($pattes, $fourrure,$yeux=2, $bouche=1)
+    public function __construct($nom,$race,$pattes, $fourrure,$yeux=2, $bouche=1)
     {
+        $this->nom = $nom;
+        $this->race = $race;
         $this->yeux = $yeux;
         $this->bouche = $bouche;
         $this->pattes = $pattes;

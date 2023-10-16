@@ -5,16 +5,17 @@ namespace App\class;
 class Sante extends PointsActions
 {
     private $categorie = "santé";
-    private int $niveauSante = 50;
+    private int $niveauSante = 70;
     private const SANTE_MIN = 0;
     private const SANTE_MAX = 100;
     
 
     public function visiteVeterinaire(): string
     {
+        $points = self::SANTE_MAX - $this->niveauSante;
         $this->setSante(self::SANTE_MAX);
         $actions =  ['action'       => ' Visite chez le vétérinaire',
-        'points'        => self::SANTE_MAX,
+        'points'        => $points,
         'niveauSante'  => $this->setSante($this->niveauSante),
         'parametre'     => $this->categorie];
 
