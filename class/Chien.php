@@ -18,5 +18,8 @@ class Chien extends Animal
     {
         return "J'ai {$this->yeux} yeux et {$this->pattes} pattes, je suis couvert de {$this->fourrure} et ma truffe est {$this->truffeColor} <br>";
     }
+    
+    
+
 
 }
